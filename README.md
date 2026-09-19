@@ -200,6 +200,7 @@ Step_semester_3/
         └── assigment_problems/
 ```
 🌿 Branching Model
+
 main
 Contains only README.md and is used for documentation and the daily progress log.
 
