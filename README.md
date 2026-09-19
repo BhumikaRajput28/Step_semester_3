@@ -201,13 +201,13 @@ Step_semester_3/
 ```
 🌿 Branching Model
 
-main
+main:
 Contains only README.md and is used for documentation and the daily progress log.
 
-develop
+develop:
 Contains only the clean, empty Java project structure and acts as the base for all feature branches.
 
-feature/session_<n>
+feature/session_<n>:
 Contains the actual coding work completed during each session.
 
 Each feature branch is created from develop and remains separate from the other feature branches.
