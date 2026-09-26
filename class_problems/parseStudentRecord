@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <vector>
+
+void parseStudentRecord(std::string csvLine) {
+    std::stringstream ss(csvLine);
+    std::string field;
+    std::vector<std::string> fields;
+
+    // Extract characters from the stringstream until a comma is found
+    while (std::getline(ss, field, ',')) {
+        fields.push_back(field);
+    }
+
+    // Validate that exactly 3 fields are present
+    if (fields.size() == 3) {
+        std::cout << "Name: " << fields[0] 
+                  << " | Roll No: " << fields[1] 
+                  << " | Dept: " << fields[2] << std::endl;
+    } else {
+        std::cout << "Invalid Record" << std::endl;
+    }
+}
+
+int main() {
+    // Testing with the provided sample inputs
+    parseStudentRecord("Ananya Verma,RA2211003010123,CSE");
+    parseStudentRecord("Ananya Verma,CSE");
+    
+    return 0;
+}
