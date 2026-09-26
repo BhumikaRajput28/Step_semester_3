@@ -1,0 +1,30 @@
+public class FileValidator {
+
+    public static String validateFileExtension(String filename) {
+        // Find the index of the last dot
+        int dotIndex = filename.lastIndexOf('.');
+        
+        // If there's no dot, or the dot is the very last character, reject it
+        if (dotIndex == -1 || dotIndex == filename.length() - 1) {
+            return "Rejected — invalid file type";
+        }
+        
+        // Extract the extension (everything after the last dot)
+        String extension = filename.substring(dotIndex + 1);
+        
+        // Check if the extension matches our accepted list, ignoring case
+        if (extension.equalsIgnoreCase("pdf") || 
+            extension.equalsIgnoreCase("docx") || 
+            extension.equalsIgnoreCase("zip")) {
+            return "Accepted";
+        } else {
+            return "Rejected — invalid file type";
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test with the sample inputs
+        System.out.println(validateFileExtension("Assignment1.PDF"));
+        System.out.println(validateFileExtension("notes.txt"));
+    }
+}
