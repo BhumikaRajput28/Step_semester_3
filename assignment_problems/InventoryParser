@@ -1,0 +1,25 @@
+public class InventoryParser {
+
+    public static void parseInventoryRecord(String csvLine) {
+        // Break the line into an array of strings using the comma as a delimiter
+        String[] fields = csvLine.split(",");
+        
+        // Validate that exactly 3 fields are present
+        if (fields.length == 3) {
+            String productName = fields[0];
+            String sku = fields[1];
+            String quantity = fields[2];
+            
+            System.out.println("Product: " + productName + " | SKU: " + sku + " | Qty: " + quantity);
+        } else {
+            // Print error message if the field count is not exactly 3
+            System.out.println("Invalid Record");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Testing with the provided sample inputs
+        parseInventoryRecord("Wireless Mouse,WM-2201,150");
+        parseInventoryRecord("Wireless Mouse,150");
+    }
+}
