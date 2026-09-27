@@ -1,0 +1,17 @@
+public class ATMValidator {
+
+    public static void checkPinLength(String pin) {
+        // Check if the length of the string is exactly 4
+        if (pin.length() == 4) {
+            System.out.println("PIN length OK.");
+        } else {
+            System.out.println("Invalid PIN — must be exactly 4 digits.");
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test with the sample inputs
+        checkPinLength("482");
+        checkPinLength("4820");
+    }
+}

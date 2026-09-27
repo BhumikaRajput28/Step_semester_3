@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+std::string maskPhoneNumber(std::string phone) {
+    // 1. Validate length
+    if (phone.length() != 10) {
+        return "Invalid phone number";
+    }
+
+    // 2. Validate all characters are numeric
+    for (char c : phone) {
+        if (!std::isdigit(c)) {
+            return "Invalid phone number";
+        }
+    }
+
+    // 3 & 4. Build masked version and insert "-"
+    std::string maskedNumber = "XXXXXX";
+    std::string lastFour = phone.substr(6);
+    
+    // In C++, we can just concatenate strings directly
+    return maskedNumber + "-" + lastFour;
+}
+
+int main() {
+    // Test with the sample input
+    std::cout << maskPhoneNumber("9876543210") << std::endl;
+    std::cout << maskPhoneNumber("98765") << std::endl;
+    
+    return 0;
+}

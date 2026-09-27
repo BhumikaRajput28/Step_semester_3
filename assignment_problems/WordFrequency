@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class WordFrequency {
+
+    public static void printFilteredWordFrequency(String feedback) {
+        // 1. Define the stop words
+        Set<String> stopWords = new HashSet<>(Arrays.asList(
+            "the", "was", "and", "a", "is", "of", "in"
+        ));
+
+        // 2. Normalize: convert to lowercase and strip commas/periods
+        String normalized = feedback.toLowerCase().replace(",", "").replace(".", "");
+
+        // 3. Split the cleaned text into words using whitespace regex
+        String[] words = normalized.split("\\s+");
+
+        // 4 & 5. Count frequencies of non-stop words
+        Map<String, Integer> frequencyMap = new HashMap<>();
+        for (String word : words) {
+            // Check if the word is empty (can happen with extra spaces) or a stop word
+            if (!word.isEmpty() && !stopWords.contains(word)) {
+                // getOrDefault handles initializing new words to 0 before adding 1
+                frequencyMap.put(word, frequencyMap.getOrDefault(word, 0) + 1);
+            }
+        }
+
+        // 6. Sort by count in descending order
+        // Convert the map entries to a list so we can sort them
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(frequencyMap.entrySet());
+        
+        // Sort using a custom comparator (comparing values in reverse/descending order)
+        entryList.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+
+        // 7. Print the results
+        for (Map.Entry<String, Integer> entry : entryList) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+
+    public static void main(String[] args) {
+        // Test with the sample input
+        printFilteredWordFrequency("The mentor was great, the session was great and clear.");
+    }
+}
